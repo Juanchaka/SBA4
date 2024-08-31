@@ -24,17 +24,20 @@ async function newGif() {
     gifs.forEach(gif => {
         let gifContainer = document.createElement("div");
         gifContainer.classList.add("gifContainer");
-        let iframe = document.createElement("img");
+        let images = document.createElement("img");
+        images.setAttribute("src", gif.images.downsized_medium.url);
+        // let iframe = document.createElement("img");
         console.log(gif);
-        iframe.setAttribute("src", gif.images.downsized_medium.url);
-        iframe.onload = () => {
-            limit--;
-            if(limit === 0) {
-                loadingWheel.style.display = "none";
-                gifsContainer.style.display = "grid";
-            };
-        };
-        gifContainer.appendChild(iframe);
+        // iframe.setAttribute("src", gif.images.downsized_medium.url);
+        // iframe.onload = () => {
+        //     limit--;
+        //     if(limit === 0) {
+        //         loadingWheel.style.display = "none";
+        //         gifsContainer.style.display = "grid";
+        //     };
+        // };
+        // gifContainer.appendChild(iframe);
+        gifContainer.appendChild(images);
         gifsContainer.appendChild(gifContainer);
 
     });
