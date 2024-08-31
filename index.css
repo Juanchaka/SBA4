@@ -78,3 +78,12 @@ button:active {
         transform: translate(-50%, -50%) rotate(360deg);
     }
 }
+
+.sorry {
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    color: azure;
+    font-size: larger;
+    display: none;
+};
