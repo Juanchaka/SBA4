@@ -18,6 +18,9 @@ async function newGif() {
     const results = await fetch(
       `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchResults}&limit=${limit}&offset=0&rating=g&lang=en`
     );
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
 
     const data = await results.json();
     const gifs = data.data;
