@@ -18,7 +18,7 @@ body {
 
 button {
     border: none;
-    border-radius: 0.3em;
+    border-radius: 0.5em;
     background-color: azure;
     color: black;
 }
@@ -30,12 +30,25 @@ button:hover {
 
 button:active {
     background-color: rgb(202, 86, 86);
-
 }
 
 .searchContainer {
+    width: 100%;
+    max-width: 50em;
     display: flex;
     gap: 1em;
+    margin: 1em auto;
+    padding: 0.5em;
+}
+
+.searchContainer input {
+    border: none;
+    padding: 1em;
+    border-radius: 0.5em;
+}
+
+.searchContainer input:hover {
+    box-shadow: 0 0 10px rgb(202, 86, 86);
 }
 
 #searchBox {
@@ -44,4 +57,12 @@ button:active {
 
 #submitBTN {
     flex-grow: 1;
+}
+
+.loadingWheel {
+    height: 15em;
+    width: 15em;
+    border: 3em solid azure;
+    border-radius: 50%;
+    border-top-color: rgb(202, 86, 86);
 }
