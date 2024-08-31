@@ -60,9 +60,21 @@ button:active {
 }
 
 .loadingWheel {
+    display: none;
     height: 15em;
     width: 15em;
     border: 3em solid azure;
     border-radius: 50%;
     border-top-color: rgb(202, 86, 86);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    animation: spin 2s infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
