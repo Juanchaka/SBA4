@@ -9,7 +9,9 @@ async function newGif() {
   const searchResults = document.getElementById("searchBox").value;
   console.log(searchResults);
 
-  const limit = 10;
+  const gifsContainer = document.querySelector(".gifsContainer");gifsContainer.innerHTML = "";
+
+  let limit = 10;
 
   try {
     const results = await fetch(
@@ -25,15 +27,22 @@ async function newGif() {
         let iframe = document.createElement("img");
         console.log(gif);
         iframe.setAttribute("src", gif.images.downsized_medium.url);
-        iframe.onload
+        iframe.onload = () => {
+            limit--;
+            if(limit === 0) {
+                loadingWheel.style.display = "none";
+                gifsContainer.style.display = "grid";
+            };
+        };
+        gifContainer.appendChild(iframe);
+        gifsContainer.appendChild(gifContainer);
+
     });
 
   } catch (err) {
     console.error(err);
-  } finally {
-    loadingWheel.style.display = "none";
   }
-}
+};
 
 newGif();
 submitBTN.addEventListener("click", newGif);
