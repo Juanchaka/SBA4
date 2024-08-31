@@ -17,7 +17,17 @@ async function newGif() {
     );
 
     const data = await results.json();
-    console.log(data.data);
+    const gifs = data.data;
+
+    gifs.forEach(gif => {
+        let gifContainer = document.createElement("div");
+        gifContainer.classList.add("gifContainer");
+        let iframe = document.createElement("img");
+        console.log(gif);
+        iframe.setAttribute("src", gif.images.downsized_medium.url);
+        iframe.onload
+    });
+
   } catch (err) {
     console.error(err);
   } finally {
