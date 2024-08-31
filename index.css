@@ -6,10 +6,42 @@
 }
 
 body {
+    /* 
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     text-align: center;
+    */
+    height: 100vh;
     background: url(./img/sean-hwang.jpg) no-repeat center center/ cover;
+}
+
+button {
+    border: none;
+    border-radius: 0.3em;
+    background-color: azure;
+    color: black;
+}
+
+button:hover {
+    box-shadow: 0 0 10px rgb(202, 86, 86);
+    cursor: pointer;
+}
+
+button:active {
+    background-color: rgb(202, 86, 86);
+
+}
+
+.searchContainer {
+    display: flex;
+    gap: 1em;
+}
+
+#searchBox {
+    flex-grow: 3;
+}
+
+#submitBTN {
+    flex-grow: 1;
 }
