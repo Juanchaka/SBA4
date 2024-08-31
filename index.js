@@ -9,9 +9,10 @@ async function newGif() {
   const searchResults = document.getElementById("searchBox").value;
   console.log(searchResults);
 
-  const gifsContainer = document.querySelector(".gifsContainer");gifsContainer.innerHTML = "";
+  const gifsContainer = document.querySelector(".gifsContainer");
+  gifsContainer.innerHTML = "";
 
-  let limit = 10;
+  let limit = 50;
 
   try {
     const results = await fetch(
@@ -21,31 +22,41 @@ async function newGif() {
     const data = await results.json();
     const gifs = data.data;
 
-    gifs.forEach(gif => {
-        let gifContainer = document.createElement("div");
-        gifContainer.classList.add("gifContainer");
-        let images = document.createElement("img");
-        images.setAttribute("src", gif.images.downsized_medium.url);
-        // let iframe = document.createElement("img");
-        console.log(gif);
-        // iframe.setAttribute("src", gif.images.downsized_medium.url);
-        // iframe.onload = () => {
-        //     limit--;
-        //     if(limit === 0) {
-        //         loadingWheel.style.display = "none";
-        //         gifsContainer.style.display = "grid";
-        //     };
-        // };
-        // gifContainer.appendChild(iframe);
-        gifContainer.appendChild(images);
-        gifsContainer.appendChild(gifContainer);
+    let loadedImages = 0;
+    const totalImages = limit;
 
+    gifs.forEach((gif) => {
+      let gifContainer = document.createElement("div");
+      gifContainer.classList.add("gifContainer");
+      let images = document.createElement("img");
+      images.setAttribute("src", gif.images.downsized_medium.url);
+      console.log(gif);
+
+      images.onload = () => {
+        loadedImages++;
+        if (loadedImages === totalImages) {
+          gifsContainer.style.display = "grid";
+          loadingWheel.style.display = "none";
+        }
+      };
+      gifContainer.appendChild(images);
+      gifsContainer.appendChild(gifContainer);
     });
-
   } catch (err) {
     console.error(err);
   }
-};
+}
 
 newGif();
 submitBTN.addEventListener("click", newGif);
+
+// let iframe = document.createElement("img");
+// iframe.setAttribute("src", gif.images.downsized_medium.url);
+// iframe.onload = () => {
+//     limit--;
+//     if(limit === 0) {
+//         loadingWheel.style.display = "none";
+//         gifsContainer.style.display = "grid";
+//     };
+// };
+// gifContainer.appendChild(iframe);
