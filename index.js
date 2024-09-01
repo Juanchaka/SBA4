@@ -34,6 +34,8 @@ async function newGif() {
     if (gifs.length === 0) {
       loadingWheel.style.display = "none";
       sorry.style.display = "block";
+      sorry.innerHTML = `<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHh5bW5lbDYwYmZpeXNrb3d5NjA4NHlsa3g0cnVuemJ3cHp6cmpmeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nd4XEur3eJxLqg32DR/giphy.webp" alt="No results image">
+                <div class="sorryMessage">Oh no! There are no ${searchResults} gifs, please try a different search.</div>`
     }
 
     let loadedImages = 0;
@@ -84,7 +86,7 @@ function firstload() {
 }
 
 submitBTN.addEventListener("click", newGif);
-window.addEventListener("load", firstload);
+window.addEventListener("load", newGif);
 
 // let iframe = document.createElement("img");
 // iframe.setAttribute("src", gif.images.downsized_medium.url);

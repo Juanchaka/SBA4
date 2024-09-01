@@ -5,8 +5,12 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
+body, html {
+    height: 100%;
+}
+
 body {
-    background: url(./img/sean-hwang.jpg) no-repeat center center/ cover;
+    background: url("./img/sean-hwang.jpg") repeat center center;background-size: cover;
 }
 
 button {
@@ -59,6 +63,7 @@ button:active {
 .container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    width: 100%;
 }
 
 .gifContainer {
@@ -73,7 +78,7 @@ button:active {
 
 .gifContainer img {
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 .loadingWheel {
@@ -97,12 +102,26 @@ button:active {
 }
 
 .sorry {
-    position: absolute;
+    position: fixed;
     top: 50%;
-    left: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: azure;
-    font-size: larger;
+    font-size: 2em;
+    font-weight: 600;
     display: none;
+    text-align: center;
+}
+
+.sorry img {
+    display: block; /* Ensure the image displays as a block-level element */
+    margin: 0 auto; /* Center image horizontally */
+    max-width: 100%; /* Ensure the image is responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.sorryMessage {
+    margin-top: 1em; /* Space between image and text */
 }
 
 @media (max-width: 768px) {
