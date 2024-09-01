@@ -1,4 +1,4 @@
-import { apiKey } from "./api.js";
+import * as apiStuffs from "./api.js";
 import { firstload } from "./load.js";
 
 const submitBTN = document.getElementById("submitBTN");
@@ -22,7 +22,7 @@ async function newGif() {
 
   try {
     const results = await fetch(
-      `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchResults}&limit=${limit}&offset=0&rating=g&lang=en`
+      `https://api.giphy.com/v1/gifs/search?api_key=${apiStuffs.apiKey}&q=${searchResults}&limit=${limit}&offset=0&rating=g&lang=en`
     );
     if (!results.ok) {
       throw new Error(`Response status: ${results.status}`);
@@ -58,13 +58,17 @@ async function newGif() {
     });
   } catch (err) {
     console.error(err);
+    loadingWheel.style.display = "none";
+    sorry.style.display = "block";
+    sorry.innerHTML = err;
   }
 };
 
+window.addEventListener("load", firstload);
 submitBTN.addEventListener("click", newGif);
 submitForm.addEventListener("keydown", function(event) {
   if(event.key ==="Enter"){
     newGif();
   }
-})
-window.addEventListener("load", firstload);
+});
+

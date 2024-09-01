@@ -1,5 +1,7 @@
 const apiKey = "D2zzF5f3FqQS2kO98BqGe2CzzaM9DNmm";
 
+const postBTN = document.getElementById("POST");
+
 async function response() {
   const response = await fetch("https://reqres.in/api/users?page=2", {
     method: "POST",
@@ -17,15 +19,13 @@ async function response() {
   console.log(that.name);
   console.log(that.movies);
 
-  const test = await fetch("https://reqres.in/api/users?page=2");
-  if (!test.ok) {
-    throw new Error(`Response status: ${response.status}`);
-  }
-  const data = await test.json();
+//   const test = await fetch("https://reqres.in/api/users?page=2");
+//   if (!test.ok) {
+//     throw new Error(`Response status: ${response.status}`);
+//   }
+//   const data = await test.json();
 
-  console.log(data);
+//   console.log(data);
 };
 
-response();
-
-export {apiKey, response};
+export {apiKey, response, postBTN};
