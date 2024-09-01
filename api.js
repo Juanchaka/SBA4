@@ -12,8 +12,8 @@ async function response() {
   let actorMovies = prompt(
     "Please enter a comma separated list of the actor's movies"
   );
-  if (!actorFirstName || !actorLastName || !actorMovies) {
-    alert("Request not submitted! Please fill in all fields.");
+  if (!actorFirstName && actorFirstName.length < 3 || !actorLastName && actorLastName.length < 3 || !actorMovies && actorMovies.length < 3) {
+    alert("Request not submitted! Please fill in all fields appropriately.");
     return;
   }
 
