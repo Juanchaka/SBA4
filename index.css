@@ -13,7 +13,11 @@ body {
     background: url("./img/sean-hwang.jpg") repeat center center;background-size: cover;
 }
 
-button {
+.topBodyContainer {
+    position: relative;
+}
+
+button, #POST {
     border: none;
     border-radius: 0.5em;
     background-color: azure;
@@ -22,7 +26,7 @@ button {
     font-weight: bold;
 }
 
-button:hover {
+button:hover, #POST:hover {
     box-shadow: 0 0 2em rgb(202, 86, 86);
     background-color: rgba(202, 86, 86, 0.522);
     color: azure;
@@ -63,6 +67,10 @@ button:active {
 
 #submitBTN {
     flex-grow: 1;
+}
+
+#POST {
+    flex-grow: .5;
 }
 
 .container {
@@ -107,7 +115,7 @@ button:active {
 }
 
 .sorry {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
