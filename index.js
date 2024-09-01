@@ -1,6 +1,7 @@
 import { apiKey } from "./api.js";
 
 const submitBTN = document.getElementById("submitBTN");
+const submitForm = document.getElementById("searchBox");
 
 let intialLoadDone = false;
 
@@ -86,7 +87,12 @@ function firstload() {
 }
 
 submitBTN.addEventListener("click", newGif);
-window.addEventListener("load", newGif);
+submitForm.addEventListener("keydown", function(event) {
+  if(event.key ==="Enter"){
+    newGif();
+  }
+})
+window.addEventListener("load", firstload);
 
 // let iframe = document.createElement("img");
 // iframe.setAttribute("src", gif.images.downsized_medium.url);

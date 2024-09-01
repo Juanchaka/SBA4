@@ -18,10 +18,14 @@ button {
     border-radius: 0.5em;
     background-color: azure;
     color: black;
+    font-size:medium;
+    font-weight: bold;
 }
 
 button:hover {
-    box-shadow: 0 0 10px rgb(202, 86, 86);
+    box-shadow: 0 0 2em rgb(202, 86, 86);
+    background-color: rgba(202, 86, 86, 0.522);
+    color: azure;
     cursor: pointer;
 }
 
@@ -30,6 +34,7 @@ button:active {
 }
 
 .searchContainer {
+    border: none;
     width: 100%;
     max-width: 50em;
     display: flex;
@@ -45,7 +50,7 @@ button:active {
 }
 
 .searchContainer input:hover {
-    box-shadow: 0 0 10px rgb(202, 86, 86);
+    box-shadow: 0 0 2em rgb(202, 86, 86);
 }
 
 #searchBox {
