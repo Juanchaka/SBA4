@@ -1,0 +1,37 @@
+                    GIF Search and Actor POST API
+
+Project Overview
+This project is a web application that allows users to search for GIFs and post actor details with their movies to a mock API. The application has a user-friendly interface where users can input search terms to fetch GIFs from Giphy and submit actor information, including a list of movies, to a fictional API endpoint.
+
+Features
+GIF Search: Search for GIFs using a query input. The GIFs are displayed in a responsive grid layout -Currently set to repsonse with 50 GIFs.
+
+Loading Indicator: Displays a loading wheel while fetching GIFs and hides it once the data is loaded.
+
+Error Handling: Displays an error message if no GIFs are found or if there is a fetch error.
+
+Actor POST: Allows users to post actor details and movies to a mock API endpoint.
+
+Responsive Design: The layout adjusts to different screen sizes using CSS media queries.
+
+Technologies Used:
+HTML:
+Structure and content of the web page.
+CSS:
+Styling of the web page and components.
+JavaScript:
+index.js: Handles GIF search, display, and interaction.
+api.js: Manages the POST request to a mock API and error handling.
+load.js: Initializes the page with a default GIF.
+
+How to Use:
+
+Search for GIFs:
+Enter a search term into the input field and click the "Submit" button or press Enter.
+The application will fetch and display GIFs related to the search term.
+If no GIFs are found, an error message will be displayed.
+
+POST Actor Details:
+Click the "Fetch: POST" button to start the process.
+Provide the actor's first name, last name, and a comma-separated list of movies in the prompts.
+The details will be submitted to the mock database, and a confirmation message will be displayed.
