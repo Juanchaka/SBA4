@@ -55,6 +55,10 @@ button:active {
     flex-grow: 3;
 }
 
+.searchContainer ::placeholder {
+    color: rgba(202, 86, 86, 0.447);
+}
+
 #submitBTN {
     flex-grow: 1;
 }

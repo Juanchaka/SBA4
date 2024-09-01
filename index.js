@@ -7,10 +7,12 @@ async function newGif() {
   loadingWheel.style.display = "block";
 
   const searchResults = document.getElementById("searchBox").value;
-  console.log(searchResults);
 
   const gifsContainer = document.querySelector(".gifsContainer");
   gifsContainer.innerHTML = "";
+
+  const sorry = document.querySelector(".sorry");
+  sorry.style.display = "none";
 
   let limit = 30;
 
@@ -19,18 +21,16 @@ async function newGif() {
       `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchResults}&limit=${limit}&offset=0&rating=g&lang=en`
     );
     if (!results.ok) {
-      throw new Error(`Response status: ${response.status}`);
+      throw new Error(`Response status: ${results.status}`);
     }
 
     const data = await results.json();
     const gifs = data.data;
 
-    if(gifs.length === 0){
-        loadingWheel.style.display = "none";
-        const sorry = document.querySelector(".sorry");
-        sorry.style.display = "block";
-        console.log("oops!");
-      }
+    if (gifs.length === 0) {
+      loadingWheel.style.display = "none";
+      sorry.style.display = "block";
+    }
 
     let loadedImages = 0;
     const totalImages = gifs.length;
@@ -57,8 +57,28 @@ async function newGif() {
   }
 }
 
-newGif();
+function firstload() {
+  const gifsContainer = document.querySelector(".gifsContainer");
+  gifsContainer.innerHTML = "";
+  let gifContainer = document.createElement("div");
+  gifContainer.classList.add("gifContainer");
+  let image = document.createElement("img");
+  image.setAttribute(
+    "src",
+    "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDJvcHV1cXphemxtOGNjYmVva2h0Z2NrYnN6bzRrN2VhaTF4MmZqZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/CnhXn5Z9OUCYTzBAVr/giphy.webp"
+  );
+
+  gifsContainer.style.display = "flex";
+  gifsContainer.style.justifyContent = "center";
+  gifsContainer.style.alignItems = "flex-start";
+  gifsContainer.style.height = "100vh";
+
+  gifContainer.appendChild(image);
+  gifsContainer.appendChild(gifContainer);
+}
+
 submitBTN.addEventListener("click", newGif);
+window.addEventListener("load", firstload);
 
 // let iframe = document.createElement("img");
 // iframe.setAttribute("src", gif.images.downsized_medium.url);
