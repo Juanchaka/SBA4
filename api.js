@@ -15,10 +15,11 @@ async function response() {
   if (!actorFirstName || !actorLastName || !actorMovies) {
     alert("Request not submitted! Please fill in all fields.");
     return;
-  };
+  }
 
-  const moviesArray = actorMovies.split(',').map(movie => movie.trim());
+  const moviesArray = actorMovies.split(",").map((movie) => movie.trim());
 
+try {
   const response = await fetch("https://reqres.in/api/users?page=2", {
     method: "POST",
     headers: {
@@ -29,37 +30,28 @@ async function response() {
         firstName: actorFirstName,
         lastName: actorLastName,
       },
-      movies: moviesArray
+      movies: moviesArray,
     }),
   });
+
+  if (!response.ok) {
+    throw new Error("Network response was not ok.");
+  }
+
   const that = await response.json();
+
   alert(
     `You successfully POSTed at ${that.createdAt}.
     Your actor's full name is ${that.name.firstName} ${that.name.lastName}.
     Your actor's user ID is ${that.id}.
     The movies ${that.name.firstName} ${
       that.name.lastName
-    } has starred in: ${that.movies.map((movie) => movie).join(", ")}
+    } has starred in: ${that.movies.join(", ")}
     `
   );
-  //   console.log(`You successfully POSTed at ${that.createdAt}`);
-  //   console.log(`Your actor's user ID is ${that.id}`);
-  //   console.log(
-  //     `Your actor's full name is ${that.name.firstName} ${that.name.lastName}`
-  //   );
-  //   console.log(
-  //     `The movies ${that.name.firstName} ${
-  //       that.name.lastName
-  //     } has starred in: ${that.movies.map((movie) => movie).join(", ")}`
-  //   );
-
-  //   const test = await fetch("https://reqres.in/api/users?page=2");
-  //   if (!test.ok) {
-  //     throw new Error(`Response status: ${response.status}`);
-  //   }
-  //   const data = await test.json();
-
-  //   console.log(data);
-}
+} catch (err) {
+    alert(`An error has occurred: ${err.message}. Please try again.`);
+};
+};
 
 export { apiKey, response, postBTN };
