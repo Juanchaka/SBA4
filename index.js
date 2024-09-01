@@ -71,4 +71,4 @@ submitForm.addEventListener("keydown", function(event) {
     newGif();
   }
 });
-
+apiStuffs.postBTN.addEventListener("click", apiStuffs.response);

@@ -9,15 +9,18 @@ async function response() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      name: "paul rudd",
+      name: {
+        firstName: "paul", 
+        lastName: "rudd"
+    },
       movies: ["I Love You Man", "Role Models"],
     }),
   });
   const that = await response.json();
-  console.log(that.createdAt);
-  console.log(that.id);
-  console.log(that.name);
-  console.log(that.movies);
+  console.log(`You successfully POSTed at ${that.createdAt}`);
+  console.log(`Your actor's user ID is ${that.id}`);
+  console.log(`Your actor's full name is ${that.name.firstName} ${that.name.lastName}`);
+  console.log(`The movies ${that.name.firstName} ${that.name.lastName} has starred in: ${that.movies.map(movie => movie).join(', ')}`);
 
 //   const test = await fetch("https://reqres.in/api/users?page=2");
 //   if (!test.ok) {
