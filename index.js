@@ -1,9 +1,8 @@
 import { apiKey } from "./api.js";
+import { firstload } from "./load.js";
 
 const submitBTN = document.getElementById("submitBTN");
 const submitForm = document.getElementById("searchBox");
-
-let intialLoadDone = false;
 
 async function newGif() {
   const loadingWheel = document.querySelector(".loadingWheel");
@@ -60,31 +59,7 @@ async function newGif() {
   } catch (err) {
     console.error(err);
   }
-}
-
-function firstload() {
-  if (intialLoadDone) return;
-
-  const container = document.querySelector(".container");
-  container.innerHTML = "";
-  let gifContainer = document.createElement("div");
-  gifContainer.classList.add("gifContainer");
-  let image = document.createElement("img");
-  image.setAttribute(
-    "src",
-    "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDJvcHV1cXphemxtOGNjYmVva2h0Z2NrYnN6bzRrN2VhaTF4MmZqZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/CnhXn5Z9OUCYTzBAVr/giphy.webp"
-  );
-
-  container.style.display = "flex";
-  container.style.justifyContent = "center";
-  container.style.alignItems = "flex-start";
-  container.style.height = "100vh";
-
-  gifContainer.appendChild(image);
-  container.appendChild(gifContainer);
-
-  intialLoadDone = true;
-}
+};
 
 submitBTN.addEventListener("click", newGif);
 submitForm.addEventListener("keydown", function(event) {
@@ -93,42 +68,3 @@ submitForm.addEventListener("keydown", function(event) {
   }
 })
 window.addEventListener("load", firstload);
-
-// let iframe = document.createElement("img");
-// iframe.setAttribute("src", gif.images.downsized_medium.url);
-// iframe.onload = () => {
-//     limit--;
-//     if(limit === 0) {
-//         loadingWheel.style.display = "none";
-//         container.style.display = "grid";
-//     };
-// };
-// gifContainer.appendChild(iframe);
-
-// async function response() {
-//   const response = await fetch("https://reqres.in/api/users?page=2", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       name: "paul rudd",
-//       movies: ["I Love You Man", "Role Models"],
-//     }),
-//   });
-//   const that = await response.json();
-//   console.log(that.createdAt);
-//   console.log(that.id);
-//   console.log(that.name);
-//   console.log(that.movies);
-
-//   const test = await fetch("https://reqres.in/api/users?page=2");
-//   if (!test.ok) {
-//     throw new Error(`Response status: ${response.status}`);
-//   }
-//   const data = await test.json();
-
-//   console.log(data);
-// };
-
-// response();
