@@ -18,7 +18,7 @@ async function newGif() {
   const sorry = document.querySelector(".sorry");
   sorry.style.display = "none";
 
-  let limit = 10;
+  let limit = 50;
 
   try {
     const results = await fetch(
