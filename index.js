@@ -2,6 +2,8 @@ import { apiKey } from "./api.js";
 
 const submitBTN = document.getElementById("submitBTN");
 
+let intialLoadDone = false;
+
 async function newGif() {
   const loadingWheel = document.querySelector(".loadingWheel");
   loadingWheel.style.display = "block";
@@ -10,6 +12,8 @@ async function newGif() {
 
   const container = document.querySelector(".container");
   container.innerHTML = "";
+
+  container.style.display = "grid";
 
   const sorry = document.querySelector(".sorry");
   sorry.style.display = "none";
@@ -56,6 +60,8 @@ async function newGif() {
 }
 
 function firstload() {
+  if (intialLoadDone) return;
+
   const container = document.querySelector(".container");
   container.innerHTML = "";
   let gifContainer = document.createElement("div");
@@ -73,6 +79,8 @@ function firstload() {
 
   gifContainer.appendChild(image);
   container.appendChild(gifContainer);
+
+  intialLoadDone = true;
 }
 
 submitBTN.addEventListener("click", newGif);
