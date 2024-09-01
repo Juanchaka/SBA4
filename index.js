@@ -78,7 +78,7 @@ function firstload() {
 }
 
 submitBTN.addEventListener("click", newGif);
-window.addEventListener("load", firstload);
+window.addEventListener("load", newGif);
 
 // let iframe = document.createElement("img");
 // iframe.setAttribute("src", gif.images.downsized_medium.url);

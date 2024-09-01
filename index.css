@@ -6,13 +6,6 @@
 }
 
 body {
-    /* 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    */
-    /* height: 100vh; */
     background: url(./img/sean-hwang.jpg) no-repeat center center/ cover;
 }
 
@@ -63,6 +56,25 @@ button:active {
     flex-grow: 1;
 }
 
+.gifsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.gifContainer {
+    background-color: rgb(202, 86, 86);
+    display: flex;
+    padding: 1em;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1.5em;
+    border-radius: 0.5em;
+}
+
+.gifContainer img {
+    width: 100%;
+}
+
 .loadingWheel {
     display: none;
     height: 15em;
@@ -91,3 +103,12 @@ button:active {
     font-size: larger;
     display: none;
 };
+
+@media screen and (max-width: 768px) {
+    .gifsContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .gifContainer {
+        margin: 0.7em;
+    }
+}
