@@ -12,46 +12,60 @@ async function response() {
   let actorMovies = prompt(
     "Please enter a comma separated list of the actor's movies"
   );
-  if (!actorFirstName && actorFirstName.length < 3 || !actorLastName && actorLastName.length < 3 || !actorMovies && actorMovies.length < 3) {
+  if (
+    (!actorFirstName && actorFirstName.length < 3) ||
+    (!actorLastName && actorLastName.length < 3) ||
+    (!actorMovies && actorMovies.length < 3)
+  ) {
     alert("Request not submitted! Please fill in all fields appropriately.");
     return;
   }
 
   const moviesArray = actorMovies.split(",").map((movie) => movie.trim());
 
-try {
-  const response = await fetch("https://reqres.in/api/users?page=2", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name: {
-        firstName: actorFirstName,
-        lastName: actorLastName,
+  const loadingWheel = document.querySelector(".loadingWheel");
+  loadingWheel.style.display = "block";
+
+  try {
+    const response = await fetch("https://reqres.in/api/users?page=2", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      movies: moviesArray,
-    }),
-  });
+      body: JSON.stringify({
+        name: {
+          firstName: actorFirstName,
+          lastName: actorLastName,
+        },
+        movies: moviesArray,
+      }),
+    });
 
-  if (!response.ok) {
-    throw new Error("Network response was not ok.");
+    if (!response.ok) {
+      throw new Error("Network response was not ok.");
+    };
+
+    const that = await response.json();
+
+    setTimeout(() => {
+      alert(
+        `You successfully POSTed at ${that.createdAt}.
+      Your actor's full name is ${that.name.firstName} ${that.name.lastName}.
+      Your actor's user ID is ${that.id}.
+      The movies ${that.name.firstName} ${
+          that.name.lastName
+        } has starred in: ${that.movies.join(", ")}
+      `
+      );
+    }, 50);
+    loadingWheel.style.display = "none";
+
+  } catch (err) {
+    setTimeout(() => {
+      alert(`An error has occurred: ${err.message}. Please try again.`);
+    }, 50);
+    loadingWheel.style.display = "none";
   }
-
-  const that = await response.json();
-
-  alert(
-    `You successfully POSTed at ${that.createdAt}.
-    Your actor's full name is ${that.name.firstName} ${that.name.lastName}.
-    Your actor's user ID is ${that.id}.
-    The movies ${that.name.firstName} ${
-      that.name.lastName
-    } has starred in: ${that.movies.join(", ")}
-    `
-  );
-} catch (err) {
-    alert(`An error has occurred: ${err.message}. Please try again.`);
-};
-};
+}
 
 export { apiKey, response, postBTN };

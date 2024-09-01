@@ -63,7 +63,7 @@ button:active {
 }
 
 .searchContainer ::placeholder {
-    color: rgba(202, 86, 86, 0.447);
+    color: rgb(202, 86, 86);
 }
 
 #submitBTN {
