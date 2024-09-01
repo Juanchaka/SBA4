@@ -10,7 +10,8 @@ body, html {
 }
 
 body {
-    background: url("./img/sean-hwang.jpg") repeat center center;background-size: cover;
+    background: url("./img/sean-hwang.jpg") repeat center center;
+    background-size: cover;
 }
 
 .topBodyContainer {

@@ -32,7 +32,6 @@ async function newGif() {
     const gifs = data.data;
 
     if (gifs.length === 0) {
-      document.body.style.overflow = "hidden";
       loadingWheel.style.display = "none";
       sorry.style.display = "block";
       sorry.innerHTML = `<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHh5bW5lbDYwYmZpeXNrb3d5NjA4NHlsa3g0cnVuemJ3cHp6cmpmeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nd4XEur3eJxLqg32DR/giphy.webp" alt="No results image">
@@ -54,8 +53,8 @@ async function newGif() {
           loadingWheel.style.display = "none";
         }
       };
-      gifContainer.appendChild(images);
-      container.appendChild(gifContainer);
+      gifContainer.append(images);
+      container.append(gifContainer);
     });
   } catch (err) {
     console.error(err);
