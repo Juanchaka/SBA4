@@ -8,8 +8,8 @@ async function newGif() {
 
   const searchResults = document.getElementById("searchBox").value;
 
-  const gifsContainer = document.querySelector(".gifsContainer");
-  gifsContainer.innerHTML = "";
+  const container = document.querySelector(".container");
+  container.innerHTML = "";
 
   const sorry = document.querySelector(".sorry");
   sorry.style.display = "none";
@@ -40,18 +40,15 @@ async function newGif() {
       gifContainer.classList.add("gifContainer");
       let images = document.createElement("img");
       images.setAttribute("src", gif.images.downsized_medium.url);
-      console.log(gif);
 
       images.onload = () => {
         loadedImages++;
         if (loadedImages === totalImages) {
-          gifsContainer.style.display = "grid";
-          gifsContainer.style.gridTemplateColumns = "repeat(3, 1fr)";
           loadingWheel.style.display = "none";
         }
       };
       gifContainer.appendChild(images);
-      gifsContainer.appendChild(gifContainer);
+      container.appendChild(gifContainer);
     });
   } catch (err) {
     console.error(err);
@@ -59,8 +56,8 @@ async function newGif() {
 }
 
 function firstload() {
-  const gifsContainer = document.querySelector(".gifsContainer");
-  gifsContainer.innerHTML = "";
+  const container = document.querySelector(".container");
+  container.innerHTML = "";
   let gifContainer = document.createElement("div");
   gifContainer.classList.add("gifContainer");
   let image = document.createElement("img");
@@ -69,17 +66,17 @@ function firstload() {
     "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDJvcHV1cXphemxtOGNjYmVva2h0Z2NrYnN6bzRrN2VhaTF4MmZqZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/CnhXn5Z9OUCYTzBAVr/giphy.webp"
   );
 
-  gifsContainer.style.display = "flex";
-  gifsContainer.style.justifyContent = "center";
-  gifsContainer.style.alignItems = "flex-start";
-  gifsContainer.style.height = "100vh";
+  container.style.display = "flex";
+  container.style.justifyContent = "center";
+  container.style.alignItems = "flex-start";
+  container.style.height = "100vh";
 
   gifContainer.appendChild(image);
-  gifsContainer.appendChild(gifContainer);
+  container.appendChild(gifContainer);
 }
 
 submitBTN.addEventListener("click", newGif);
-window.addEventListener("load", newGif);
+window.addEventListener("load", firstload);
 
 // let iframe = document.createElement("img");
 // iframe.setAttribute("src", gif.images.downsized_medium.url);
@@ -87,7 +84,7 @@ window.addEventListener("load", newGif);
 //     limit--;
 //     if(limit === 0) {
 //         loadingWheel.style.display = "none";
-//         gifsContainer.style.display = "grid";
+//         container.style.display = "grid";
 //     };
 // };
 // gifContainer.appendChild(iframe);
