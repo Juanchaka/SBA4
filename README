@@ -1,4 +1,4 @@
-                    GIF Search and Actor POST API
+                                GIF Search and Actor POST API
 
 Project Overview
 This project is a web application that allows users to search for GIFs and post actor details with their movies to a mock API. The application has a user-friendly interface where users can input search terms to fetch GIFs from Giphy and submit actor information, including a list of movies, to a fictional API endpoint.
