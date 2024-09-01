@@ -14,7 +14,7 @@ async function newGif() {
   const sorry = document.querySelector(".sorry");
   sorry.style.display = "none";
 
-  let limit = 30;
+  let limit = 10;
 
   try {
     const results = await fetch(
@@ -46,6 +46,7 @@ async function newGif() {
         loadedImages++;
         if (loadedImages === totalImages) {
           gifsContainer.style.display = "grid";
+          gifsContainer.style.gridTemplateColumns = "repeat(3, 1fr)";
           loadingWheel.style.display = "none";
         }
       };

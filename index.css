@@ -56,11 +56,6 @@ button:active {
     flex-grow: 1;
 }
 
-.gifsContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
-
 .gifContainer {
     background-color: rgb(202, 86, 86);
     display: flex;
@@ -104,7 +99,13 @@ button:active {
     display: none;
 };
 
-@media screen and (max-width: 768px) {
+/* .gifsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}; */
+
+@media screen and
+    (max-width: 768px) {
     .gifsContainer {
         grid-template-columns: repeat(2, 1fr);
     }
